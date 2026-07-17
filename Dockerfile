@@ -1,5 +1,7 @@
 # Dockerfile
-FROM node:20-alpine AS builder
+# Используем Debian-slim вместо Alpine: Prisma 5 + glibc движок корректно
+# работает с OpenSSL 3 (musl-движок на Alpine требует libssl.so.1.1, которой нет в новых Alpine)
+FROM node:20-slim AS builder
 
 WORKDIR /app
 
@@ -11,7 +13,7 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM node:20-slim AS runner
 
 WORKDIR /app
 
