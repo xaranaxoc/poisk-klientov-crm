@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - sqlite_data:/app/prisma
+    environment:
+      - DATABASE_URL=file:./dev.db
+      - ZAI_API_KEY=916cd5b13f0e4e7c9c1bb9beff33cf9a.UFkJYkUZhPOpK1SW
+      - NODE_ENV=production
+
+volumes:
+  sqlite_data:
