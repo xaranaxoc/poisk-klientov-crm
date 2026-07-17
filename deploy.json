@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "deploy": "scp -r C:/Users/bu4ukeec/Desktop/Projects/poisk-klientov/crm-app/* root@2.26.142.85:/root/crm-app"
+  }
+}
